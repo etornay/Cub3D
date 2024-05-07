@@ -1,6 +1,8 @@
-_Los objetivos de este proyecto son:
-Rigor, uso de C, uso de algoritmos básicos, investigación de información, etc. Como proyecto de diseño gráfico, cub3D te permitirá mejorar tus habilidades en estas áreas:
-ventanas, colores, eventos, rellenar formas, etc. En resumen, cub3D es un notable campo de juegos para explorar las aplicaciones prácticas y lúdicas de las matemáticas sin necesidad de entender los detalles específicos. Con la ayuda de los numerosos documentos disponibles en Internet, utilizarás las matemáticas como herramienta para crear algoritmos elegantes y eficientes._
+_Los objetivos de este proyecto son:_
+
+_Rigor, uso de C, uso de algoritmos básicos, investigación de información, etc. Como proyecto de diseño gráfico, cub3D te permitirá mejorar tus habilidades en estas áreas:_
+
+_Ventanas, colores, eventos, rellenar formas, etc. En resumen, cub3D es un notable campo de juegos para explorar las aplicaciones prácticas y lúdicas de las matemáticas sin necesidad de entender los detalles específicos. Con la ayuda de los numerosos documentos disponibles en Internet, utilizarás las matemáticas como herramienta para crear algoritmos elegantes y eficientes._
 
 * ENLACE GUÍA/TUTORIAL: https://medium.com/@afatir.ahmedfatir/cub3d-tutorial-af5dd31d2fcf
 
