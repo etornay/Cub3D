@@ -6,7 +6,7 @@
 /*   By: etornay- <etornay-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 13:04:58 by nmontiel          #+#    #+#             */
-/*   Updated: 2024/05/07 13:02:14 by etornay-         ###   ########.fr       */
+/*   Updated: 2024/05/08 17:39:12 by etornay-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,6 +131,9 @@ void	keys(mlx_key_data_t k, void *ks);
 void	keys2(mlx_key_data_t k, void *ks);
 
 //raycasting.c
-
+void	raycasting(t_data *data);
+float	get_horizontal_cross(t_data *data, float angle);
+float	get_vertical_cross(t_data *data, float angle);
+int		check_cross(float angle, float *cross, float *step_size, int horizon);
 
 #endif
