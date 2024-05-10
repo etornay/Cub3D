@@ -6,7 +6,7 @@
 /*   By: etornay- <etornay-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 13:04:58 by nmontiel          #+#    #+#             */
-/*   Updated: 2024/05/10 14:35:58 by etornay-         ###   ########.fr       */
+/*   Updated: 2024/05/10 15:49:14 by etornay-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,5 +142,9 @@ int		check_cross(float angle, float *cross, float *step_size, int horizon);
 int		angle_circle(float angle, char axis);
 int		check_wall_hit(t_data *data, float x, float y);
 float	check_angle(float angle);
+
+//render.c
+void	render_walls(t_data *data, int ray);
+
 
 #endif

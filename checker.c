@@ -6,7 +6,7 @@
 /*   By: etornay- <etornay-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 13:31:04 by etornay-          #+#    #+#             */
-/*   Updated: 2024/05/10 14:34:57 by etornay-         ###   ########.fr       */
+/*   Updated: 2024/05/10 14:48:12 by etornay-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ int	check_wall_hit(t_data *data, float x, float y)
 	y_size = floor(y / SIZE);
 	if (x_size >= data->w_map || y_size >= data->h_map)
 		return (0);
-	if (data->map[x_size] && y_size <= (int)ft_strlen(data->map[x_size])
-		|| data->map[y_size] && x_size <= (int)ft_strlen(data->map[y_size]))
+	if ((data->map[x_size] && y_size <= (int)ft_strlen(data->map[x_size]))
+		|| (data->map[y_size] && x_size <= (int)ft_strlen(data->map[y_size])))
 		if (data->map[y_size][x_size] == '1')
 			return (0);
 	return (1);

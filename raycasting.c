@@ -6,7 +6,7 @@
 /*   By: etornay- <etornay-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 12:56:35 by etornay-          #+#    #+#             */
-/*   Updated: 2024/05/10 14:46:50 by etornay-         ###   ########.fr       */
+/*   Updated: 2024/05/10 15:36:21 by etornay-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,5 +103,11 @@ void	raycasting(t_data *data)
 		hor_cross = horizontal_cross(data, check_angle(data->ray->ray_angle));
 		ver_cross = vertical_cross(data, check_angle(data->ray->ray_angle));
 	}
-	/* if () */
+	if (ver_cross <= hor_cross)
+		ver_cross = data->ray->distance;
+	else
+	{
+		hor_cross = data->ray->distance;
+		data->ray->flag = 1;
+	}
 }
