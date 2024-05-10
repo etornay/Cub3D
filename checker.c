@@ -6,7 +6,7 @@
 /*   By: etornay- <etornay-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 13:31:04 by etornay-          #+#    #+#             */
-/*   Updated: 2024/05/09 17:23:23 by etornay-         ###   ########.fr       */
+/*   Updated: 2024/05/10 14:34:57 by etornay-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int	check_cross(float angle, float *cross, float *step_size, int horizon)
 
 //Comprueba que el ángulo esté de 0º a 360º
 
-void	check_angle(float angle)
+float	check_angle(float angle)
 {
 	if (angle < 0)
 		angle += (2 * M_PI);

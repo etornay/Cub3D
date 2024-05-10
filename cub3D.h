@@ -6,7 +6,7 @@
 /*   By: etornay- <etornay-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 13:04:58 by nmontiel          #+#    #+#             */
-/*   Updated: 2024/05/09 16:47:44 by etornay-         ###   ########.fr       */
+/*   Updated: 2024/05/10 14:35:58 by etornay-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,10 @@ typedef struct s_ray
 	double	ray_angle;// ray angle
 	double	distance;// distance to the wall
 	int		flag;// flag for the wall
+	double	ver_x;
+	double	ver_y;
+	double	hor_x;
+	double	hor_y;
 }	t_ray;
 
 typedef struct s_data
@@ -132,10 +136,11 @@ void	keys2(mlx_key_data_t k, void *ks);
 
 //raycasting.c
 void	raycasting(t_data *data);
-float	get_horizontal_cross(t_data *data, float angle);
-float	get_vertical_cross(t_data *data, float angle);
+float	horizontal_cross(t_data *data, float angle);
+float	vertical_cross(t_data *data, float angle);
 int		check_cross(float angle, float *cross, float *step_size, int horizon);
 int		angle_circle(float angle, char axis);
 int		check_wall_hit(t_data *data, float x, float y);
+float	check_angle(float angle);
 
 #endif
