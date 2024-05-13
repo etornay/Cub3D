@@ -6,7 +6,7 @@
 /*   By: etornay- <etornay-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 13:04:58 by nmontiel          #+#    #+#             */
-/*   Updated: 2024/05/10 15:49:14 by etornay-         ###   ########.fr       */
+/*   Updated: 2024/05/13 17:57:04 by etornay-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ typedef struct s_person
 {
 	int		pers_x;// player x position in pixels
 	int		pers_y;// player y position in pixels
-	double	angle;// player angle
+	double	ang;// player angle
 	float	vis_rd;// field of view (vision) in radians
 	int		rot;// rotation flag
 	int		lf_rt;// left right flag
@@ -56,13 +56,14 @@ typedef struct s_person
 
 typedef struct s_ray
 {
-	double	ray_angle;// ray angle
-	double	distance;// distance to the wall
+	double	ang;// ray angle
+	double	distan;// distance to the wall
 	int		flag;// flag for the wall
 	double	ver_x;
 	double	ver_y;
 	double	hor_x;
 	double	hor_y;
+	int		index;
 }	t_ray;
 
 typedef struct s_data
@@ -144,7 +145,12 @@ int		check_wall_hit(t_data *data, float x, float y);
 float	check_angle(float angle);
 
 //render.c
-void	render_walls(t_data *data, int ray);
-
+void			render_walls(t_data *data, int ray);
+void			create_walls(t_data *data, double wall_h, int t_pix, int b_pix);
+mlx_texture_t	*get_texture(t_data *data, int flag);
+double			get_x_coor(t_data *data, mlx_texture_t *texture);
+void			create_pixels(t_data *data, int x, int y, int color);
+int				reverse_bytes(int i);
+int				get_colors(int r, int g, int b, int a);
 
 #endif

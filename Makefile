@@ -16,7 +16,9 @@ SRC =		check_map.c \
 			map.c \
 			free.c \
 			keys.c \
-			raycasting.c
+			raycasting.c \
+			render.c \
+			render_utils.c
 
 OBJT_DIR = objt
 

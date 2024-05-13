@@ -6,7 +6,7 @@
 /*   By: etornay- <etornay-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 16:20:45 by etornay-          #+#    #+#             */
-/*   Updated: 2024/05/08 17:15:25 by etornay-         ###   ########.fr       */
+/*   Updated: 2024/05/13 17:37:44 by etornay-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,15 +42,15 @@ void	cam_rotation(t_data *data, int i)
 {
 	if (i == 1)
 	{
-		data->person->angle += ROTATION;
-		if (data->person->angle > (2 * M_PI))
-			data->person->angle -= (2 * M_PI);
+		data->person->ang += ROTATION;
+		if (data->person->ang > (2 * M_PI))
+			data->person->ang -= (2 * M_PI);
 	}
 	else
 	{
-		data->person->angle -= ROTATION;
-		if (data->person->angle < 0)
-			data->person->angle += (2 * M_PI);
+		data->person->ang -= ROTATION;
+		if (data->person->ang < 0)
+			data->person->ang += (2 * M_PI);
 	}
 }
 
@@ -64,23 +64,23 @@ void	rotation(t_data *data, double x, double y)
 		cam_rotation(data, 0);
 	if (data->person->up_dw == 1)
 	{
-		x = cos(data->person->angle) * SPEED;
-		y = sin(data->person->angle) * SPEED;
+		x = cos(data->person->ang) * SPEED;
+		y = sin(data->person->ang) * SPEED;
 	}
 	if (data->person->up_dw == -1)
 	{
-		x = -cos(data->person->angle) * SPEED;
-		y = -sin(data->person->angle) * SPEED;
+		x = -cos(data->person->ang) * SPEED;
+		y = -sin(data->person->ang) * SPEED;
 	}
 	if (data->person->lf_rt == 1)
 	{
-		x = cos(data->person->angle) * SPEED;
-		y = -sin(data->person->angle) * SPEED;
+		x = cos(data->person->ang) * SPEED;
+		y = -sin(data->person->ang) * SPEED;
 	}
 	if (data->person->lf_rt == -1)
 	{
-		x = -cos(data->person->angle) * SPEED;
-		y = sin(data->person->angle) * SPEED;
+		x = -cos(data->person->ang) * SPEED;
+		y = sin(data->person->ang) * SPEED;
 	}
 	movement(data, 0, 0);
 }

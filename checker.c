@@ -6,7 +6,7 @@
 /*   By: etornay- <etornay-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 13:31:04 by etornay-          #+#    #+#             */
-/*   Updated: 2024/05/10 14:48:12 by etornay-         ###   ########.fr       */
+/*   Updated: 2024/05/13 18:22:29 by etornay-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,17 +47,17 @@ int	check_cross(float angle, float *cross, float *step_size, int horizon)
 	}
 	else
 	{
-		if (angle > (M_PI / 2) && angle < ((3 * M_PI) / 2))
+		if (!(angle > (M_PI / 2) && angle < ((3 * M_PI) / 2)))
 		{
 			*cross += SIZE;
 			return (-1);
 		}
 		*step_size *= -1;
 	}
-	return (0);
+	return (1);
 }
 
-//Comprueba que el ángulo esté de 0º a 360º
+//Normaliza que el ángulo esté de 0º a 360º
 
 float	check_angle(float angle)
 {

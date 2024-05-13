@@ -6,7 +6,7 @@
 /*   By: etornay- <etornay-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 13:03:53 by nmontiel          #+#    #+#             */
-/*   Updated: 2024/05/07 12:56:23 by etornay-         ###   ########.fr       */
+/*   Updated: 2024/05/13 17:43:57 by etornay-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,13 @@ void	ft_angle(t_data *data)
 
 	degrees = data->map[data->p_y][data->p_x];
 	if (degrees == 'N')
-		data->person->angle = ((3 * M_PI) / 2);
+		data->person->ang = ((3 * M_PI) / 2);
 	if (degrees == 'E')
-		data->person->angle = 0;
+		data->person->ang = 0;
 	if (degrees == 'S')
-		data->person->angle = (M_PI / 2);
+		data->person->ang = (M_PI / 2);
 	if (degrees == 'W')
-		data->person->angle = M_PI;
+		data->person->ang = M_PI;
 	data->person->pers_x = (data->p_x * SIZE) + (SIZE / 2);
 	data->person->pers_y = (data->p_y * SIZE) + (SIZE / 2);
 	data->person->vis_rd = (VISION * M_PI / 180);
@@ -74,9 +74,6 @@ int	main(int argc, char **argv)
 		init_data(&data);
 		if (read_map(&data, argv[1]))
 			return (free_data(&data), 1);
-		/* int i = -1;
-		while (data.map[++i])
-			printf("%s\n", data.map[i]); */
 		if (initialize_game(&data))
 			return (free_data(&data), 1);
 		free_data(&data);

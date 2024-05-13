@@ -6,7 +6,7 @@
 /*   By: etornay- <etornay-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 12:56:35 by etornay-          #+#    #+#             */
-/*   Updated: 2024/05/10 15:36:21 by etornay-         ###   ########.fr       */
+/*   Updated: 2024/05/13 18:23:47 by etornay-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ float	vertical_cross(t_data *data, float angle)
 	vertical_x = floor(data->person->pers_x / SIZE) * SIZE;
 	pixel = check_cross(angle, &vertical_x, &x_limit, 0);
 	vertical_y = data->person->pers_y + (vertical_x - data->person->pers_x)
-		* tan(data->ray->ray_angle);
+		* tan(angle);
 	if ((angle_circle(angle, 'x') && y_limit < 0)
 		|| (!angle_circle(angle, 'x') && y_limit > 0))
 		y_limit *= -1;
@@ -72,11 +72,11 @@ float	horizontal_cross(t_data *data, float angle)
 	x_limit = SIZE / tan(angle);
 	y_limit = SIZE;
 	horizontal_y = floor(data->person->pers_y / SIZE) * SIZE;
-	pixel = check_cross(angle, &horizontal_y, &y_limit, 0);
-	horizontal_x = data->person->pers_y + (horizontal_y - data->person->pers_y)
-		* tan(data->ray->ray_angle);
-	if ((angle_circle(angle, 'y') && x_limit < 0)
-		|| (!angle_circle(angle, 'y') && x_limit > 0))
+	pixel = check_cross(angle, &horizontal_y, &y_limit, 1);
+	horizontal_x = data->person->pers_x + (horizontal_y - data->person->pers_y)
+		* tan(angle);
+	if ((angle_circle(angle, 'y') && x_limit > 0)
+		|| (!angle_circle(angle, 'y') && x_limit < 0))
 		x_limit *= -1;
 	while (check_wall_hit(data, (horizontal_y - pixel), horizontal_x))
 	{
@@ -96,18 +96,21 @@ void	raycasting(t_data *data)
 	int		ray;
 
 	ray = 0;
-	data->ray->ray_angle = data->person->angle - (data->person->vis_rd / 2);
+	data->ray->ang = data->person->ang - (data->person->vis_rd / 2);
 	while (ray < WIDTH)
 	{
 		data->ray->flag = 0;
-		hor_cross = horizontal_cross(data, check_angle(data->ray->ray_angle));
-		ver_cross = vertical_cross(data, check_angle(data->ray->ray_angle));
-	}
-	if (ver_cross <= hor_cross)
-		ver_cross = data->ray->distance;
-	else
-	{
-		hor_cross = data->ray->distance;
-		data->ray->flag = 1;
+		hor_cross = horizontal_cross(data, check_angle(data->ray->ang));
+		ver_cross = vertical_cross(data, check_angle(data->ray->ang));
+		if (ver_cross <= hor_cross)
+			data->ray->distan = ver_cross;
+		else
+		{
+			data->ray->distan = hor_cross;
+			data->ray->flag = 1;
+		}
+		render_walls(data, ray);
+		ray++;
+		data->ray->ang += (data->person->vis_rd / WIDTH);
 	}
 }
