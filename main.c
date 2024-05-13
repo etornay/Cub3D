@@ -6,7 +6,7 @@
 /*   By: etornay- <etornay-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 13:03:53 by nmontiel          #+#    #+#             */
-/*   Updated: 2024/05/13 17:43:57 by etornay-         ###   ########.fr       */
+/*   Updated: 2024/05/13 19:44:16 by etornay-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	print_map(void *ks)
 	data = ks;
 	mlx_delete_image(data->mlx, data->img);
 	data->img = mlx_new_image(data->mlx, WIDTH, HEIGHT);
-	rotation(data, 0, 0);
+	all_movement(data, 0, 0);
 	raycasting(data);
 	mlx_image_to_window(data->mlx, data->img, 0, 0);
 }
@@ -86,8 +86,3 @@ void	ft_leaks(void)
 {
 	system("leaks -q cub3D");
 }
-
-//imprimir mapa
-/* int i = -1;
-while (data.map[++i])
-	printf("%s\n", data.map[i]); */

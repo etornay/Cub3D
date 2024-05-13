@@ -6,7 +6,7 @@
 /*   By: etornay- <etornay-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 12:56:35 by etornay-          #+#    #+#             */
-/*   Updated: 2024/05/13 18:23:47 by etornay-         ###   ########.fr       */
+/*   Updated: 2024/05/13 18:55:59 by etornay-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ float	vertical_cross(t_data *data, float angle)
 	int		pixel;
 
 	x_limit = SIZE;
-	y_limit = SIZE / tan(angle);
+	y_limit = SIZE * tan(angle);
 	vertical_x = floor(data->person->pers_x / SIZE) * SIZE;
 	pixel = check_cross(angle, &vertical_x, &x_limit, 0);
 	vertical_y = data->person->pers_y + (vertical_x - data->person->pers_x)
@@ -74,7 +74,7 @@ float	horizontal_cross(t_data *data, float angle)
 	horizontal_y = floor(data->person->pers_y / SIZE) * SIZE;
 	pixel = check_cross(angle, &horizontal_y, &y_limit, 1);
 	horizontal_x = data->person->pers_x + (horizontal_y - data->person->pers_y)
-		* tan(angle);
+		/ tan(angle);
 	if ((angle_circle(angle, 'y') && x_limit > 0)
 		|| (!angle_circle(angle, 'y') && x_limit < 0))
 		x_limit *= -1;

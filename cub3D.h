@@ -6,7 +6,7 @@
 /*   By: etornay- <etornay-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 13:04:58 by nmontiel          #+#    #+#             */
-/*   Updated: 2024/05/13 17:57:04 by etornay-         ###   ########.fr       */
+/*   Updated: 2024/05/13 19:41:39 by etornay-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,7 +122,7 @@ int		save_textures(t_data *data, char *text);
 int		save_textures_2(t_data *data, char **split_text, char **tc);
 
 //camera.c
-void	rotation(t_data *data, double x, double y);
+void	all_movement(t_data *data, double x, double y);
 void	cam_rotation(t_data *data, int i);
 void	movement(t_data *data, double x, double y);
 

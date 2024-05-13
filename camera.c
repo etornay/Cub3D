@@ -6,7 +6,7 @@
 /*   By: etornay- <etornay-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 16:20:45 by etornay-          #+#    #+#             */
-/*   Updated: 2024/05/13 17:37:44 by etornay-         ###   ########.fr       */
+/*   Updated: 2024/05/13 20:01:06 by etornay-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	cam_rotation(t_data *data, int i)
 
 /* Esta función se encarga de la visión de rotación del jugador y movimiento */
 
-void	rotation(t_data *data, double x, double y)
+void	all_movement(t_data *data, double x, double y)
 {
 	if (data->person->rot == 1)
 		cam_rotation(data, 1);
@@ -74,13 +74,13 @@ void	rotation(t_data *data, double x, double y)
 	}
 	if (data->person->lf_rt == 1)
 	{
-		x = cos(data->person->ang) * SPEED;
-		y = -sin(data->person->ang) * SPEED;
+		x = -sin(data->person->ang) * SPEED;
+		y = cos(data->person->ang) * SPEED;
 	}
 	if (data->person->lf_rt == -1)
 	{
-		x = -cos(data->person->ang) * SPEED;
-		y = sin(data->person->ang) * SPEED;
+		x = sin(data->person->ang) * SPEED;
+		y = -cos(data->person->ang) * SPEED;
 	}
 	movement(data, 0, 0);
 }
