@@ -6,7 +6,7 @@
 /*   By: etornay- <etornay-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 13:04:58 by nmontiel          #+#    #+#             */
-/*   Updated: 2024/05/13 19:41:39 by etornay-         ###   ########.fr       */
+/*   Updated: 2024/05/14 19:24:56 by etornay-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,12 @@
 # define E_TEXT		14 //error de texturas
 # define E_LIM		15 //error en los limites de la ventana
 
-# define WIDTH		2500
+# define WIDTH		2300
 # define HEIGHT		1300
 # define SIZE		30
-# define VISION		60
+# define VISION		70
 # define SPEED		3
-# define ROTATION	0.05
+# define ROTATION	0.08
 
 typedef struct s_person
 {

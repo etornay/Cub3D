@@ -6,7 +6,7 @@
 /*   By: etornay- <etornay-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 16:20:45 by etornay-          #+#    #+#             */
-/*   Updated: 2024/05/13 20:01:06 by etornay-         ###   ########.fr       */
+/*   Updated: 2024/05/14 13:21:00 by etornay-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,5 +82,5 @@ void	all_movement(t_data *data, double x, double y)
 		x = sin(data->person->ang) * SPEED;
 		y = -cos(data->person->ang) * SPEED;
 	}
-	movement(data, 0, 0);
+	movement(data, x, y);
 }

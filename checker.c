@@ -6,7 +6,7 @@
 /*   By: etornay- <etornay-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 13:31:04 by etornay-          #+#    #+#             */
-/*   Updated: 2024/05/13 19:04:15 by etornay-         ###   ########.fr       */
+/*   Updated: 2024/05/14 16:42:52 by etornay-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	check_wall_hit(t_data *data, float x, float y)
 		return (0);
 	x_size = floor(x / SIZE);
 	y_size = floor(y / SIZE);
-	if (x_size >= data->w_map || y_size >= data->h_map)
+	if (y_size >= data->h_map || x_size >= data->w_map)
 		return (0);
 	if (data->map[y_size] && x_size <= (int)ft_strlen(data->map[y_size]))
 		if (data->map[y_size][x_size] == '1')
@@ -46,7 +46,7 @@ int	check_cross(float angle, float *cross, float *step_size, int horizon)
 	}
 	else
 	{
-		if (!(angle > (M_PI / 2) && angle < ((3 * M_PI) / 2)))
+		if (!(angle > M_PI / 2 && angle < 3 * M_PI / 2))
 		{
 			*cross += SIZE;
 			return (-1);

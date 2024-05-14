@@ -6,7 +6,7 @@
 /*   By: etornay- <etornay-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 12:56:35 by etornay-          #+#    #+#             */
-/*   Updated: 2024/05/13 18:55:59 by etornay-         ###   ########.fr       */
+/*   Updated: 2024/05/14 19:13:17 by etornay-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,8 +69,8 @@ float	horizontal_cross(t_data *data, float angle)
 	float	y_limit;
 	int		pixel;
 
-	x_limit = SIZE / tan(angle);
 	y_limit = SIZE;
+	x_limit = SIZE / tan(angle);
 	horizontal_y = floor(data->person->pers_y / SIZE) * SIZE;
 	pixel = check_cross(angle, &horizontal_y, &y_limit, 1);
 	horizontal_x = data->person->pers_x + (horizontal_y - data->person->pers_y)
@@ -78,15 +78,15 @@ float	horizontal_cross(t_data *data, float angle)
 	if ((angle_circle(angle, 'y') && x_limit > 0)
 		|| (!angle_circle(angle, 'y') && x_limit < 0))
 		x_limit *= -1;
-	while (check_wall_hit(data, (horizontal_y - pixel), horizontal_x))
+	while (check_wall_hit(data, horizontal_x, (horizontal_y - pixel)))
 	{
 		horizontal_x += x_limit;
 		horizontal_y += y_limit;
 	}
 	data->ray->hor_x = horizontal_x;
 	data->ray->hor_y = horizontal_y;
-	return (sqrt(pow(horizontal_y - data->person->pers_y, 2)
-			+ pow(horizontal_x - data->person->pers_x, 2)));
+	return (sqrt(pow(horizontal_x - data->person->pers_x, 2)
+			+ pow(horizontal_y - data->person->pers_y, 2)));
 }
 
 void	raycasting(t_data *data)

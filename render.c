@@ -6,7 +6,7 @@
 /*   By: etornay- <etornay-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/10 15:46:33 by etornay-          #+#    #+#             */
-/*   Updated: 2024/05/13 18:09:31 by etornay-         ###   ########.fr       */
+/*   Updated: 2024/05/14 18:07:23 by etornay-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,11 @@ double	get_x_coor(t_data *data, mlx_texture_t *texture)
 	double	x_coor;
 
 	if (data->ray->flag == 1)
-		x_coor = (int)fmodf(data->ray->hor_x
-				* (texture->width / SIZE), texture->width);
+		x_coor = (int)fmodf((data->ray->hor_x
+					* (texture->width / SIZE)), texture->width);
 	else
-		x_coor = (int)fmodf(data->ray->ver_y
-				* (texture->width / SIZE), texture->width);
+		x_coor = (int)fmodf((data->ray->ver_y
+					* (texture->width / SIZE)), texture->width);
 	return (x_coor);
 }
 
@@ -47,7 +47,7 @@ mlx_texture_t	*get_texture(t_data *data, int flag)
 	data->ray->ang = check_angle(data->ray->ang);
 	if (flag == 1)
 	{
-		if (data->ray->ang > M_PI && data->ray->ang < 0)
+		if (data->ray->ang > M_PI || data->ray->ang < 0)
 			return (data->no);
 		else
 			return (data->so);
@@ -66,12 +66,12 @@ void	create_walls(t_data *data, double wall_h, int t_pix, int b_pix)
 	double			x_coor;
 	double			y_coor;
 	double			height_factor;
-	int				*pixel_array;
+	uint32_t		*pixel_array;
 	mlx_texture_t	*texture;
 
 	texture = get_texture(data, data->ray->flag);
+	pixel_array = (uint32_t *)texture->pixels;
 	height_factor = ((double)texture->height / wall_h);
-	pixel_array = (int *)texture->pixels;
 	x_coor = get_x_coor(data, texture);
 	y_coor = (t_pix - (HEIGHT / 2) + (wall_h / 2)) * height_factor;
 	if (y_coor < 0)
@@ -94,10 +94,10 @@ void	render_walls(t_data *data, int ray)
 	double	bottom_pixel;
 
 	data->ray->distan *= cos(check_angle(data->ray->ang - data->person->ang));
-	wall_height = ((SIZE / data->ray->distan)
-			* ((HEIGHT / 2) / tan(data->person->vis_rd / 2)));
-	top_pixel = ((HEIGHT / 2) - (wall_height / 2));
-	bottom_pixel = ((HEIGHT / 2) + (wall_height / 2));
+	wall_height = (SIZE / data->ray->distan) \
+	* (WIDTH / 2) / tan(data->person->vis_rd / 2);
+	top_pixel = (HEIGHT / 2) - (wall_height / 2);
+	bottom_pixel = (HEIGHT / 2) + (wall_height / 2);
 	if (top_pixel < 0)
 		top_pixel = 0;
 	if (bottom_pixel > HEIGHT)
