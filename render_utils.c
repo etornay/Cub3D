@@ -6,7 +6,7 @@
 /*   By: etornay- <etornay-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 16:23:18 by etornay-          #+#    #+#             */
-/*   Updated: 2024/05/13 18:11:31 by etornay-         ###   ########.fr       */
+/*   Updated: 2024/05/15 13:53:25 by etornay-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	create_pixels(t_data *data, int x, int y, int color)
 {
 	if (x < 0 || x > WIDTH)
 		return ;
-	if (y < 0 || x > HEIGHT)
+	if (y < 0 || y > HEIGHT)
 		return ;
 	mlx_put_pixel(data->img, x, y, color);
 }
