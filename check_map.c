@@ -3,16 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: etornay- <etornay-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nmontiel <montielarce9@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 16:36:51 by nmontiel          #+#    #+#             */
-/*   Updated: 2024/05/07 20:28:45 by etornay-         ###   ########.fr       */
+/*   Updated: 2024/05/16 17:59:18 by nmontiel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
-
-/* Valida y asigna los colores definidos en el mapa a t_data */
 
 int	check_colors(t_data *d, char *t_c, char *split_text)
 {
@@ -43,8 +41,6 @@ int	check_colors(t_data *d, char *t_c, char *split_text)
 	return (0);
 }
 
-/* Analiza el mapa para comprobar que es valido */
-
 int	check_map(t_data *d)
 {
 	if (check_only_spaces_fl(d) || check_elements_map(d) || fix_map(d))
@@ -74,9 +70,6 @@ int	check_map(t_data *d)
 	return (0);
 }
 
-/* Verifica si las primeras y las ultimas lineas del mapa son unicamente
-espacios u otros caracteres especiales seguidos por un 1 */
-
 int	check_only_spaces_fl(t_data *d)
 {
 	d->i = -1;
@@ -91,9 +84,6 @@ int	check_only_spaces_fl(t_data *d)
 	}
 	return (0);
 }
-
-/* Verifica si el mapa tiene solo caracteres validos y un elemento de jugador
-(N, S, E o W) */
 
 int	check_elements_map(t_data *d)
 {
@@ -121,31 +111,22 @@ int	check_elements_map(t_data *d)
 	return (0);
 }
 
-/* Lee las lineas del mapa y recopila informacion sobre las texturas y 
-los colores. Comprueba que estan las 6 que tiene que haber y si son validas */
-
 int	check_elements(t_data *d, char **texture)
 {
+	int	map_found;
+
+	map_found = 0;
 	while (d->line && d->line[0] != '1' && d->line[0] != ' ')
 	{
-		if ((!ft_strncmp(d->line, "NO", 2) || !ft_strncmp(d->line, "SO", 2)
-				|| !ft_strncmp(d->line, "WE", 2)
-				|| !ft_strncmp(d->line, "EA", 2))
-			&& (d->line[2] == ' ' || (d->line[2] >= 9 && d->line[2] <= 13)))
-		{
-			*texture = ft_strjoin(*texture, d->line);
-			d->count_textures++;
-		}
-		else if ((!ft_strncmp(d->line, "F", 1) || !ft_strncmp(d->line, "C", 1))
-			&& (d->line[1] == ' '
-				|| (d->line[1] >= 9 && d->line[1] <= 13)))
-		{
-			*texture = ft_strjoin(*texture, d->line);
-			d->count_textures++;
-		}
+		check_textures(d, texture);
 		free(d->line);
 		d->line = get_next_line(d->fd);
+		if (d->line && (d->line[0] == '1' || d->line[0] == ' '))
+			map_found = 1;
 	}
+	if (!map_found)
+		return (free(*texture), free(d->line),
+			ft_error2(N_MAP));
 	if (d->count_textures != 6)
 		return (free(*texture), free(d->line), ft_error(E_TEXT));
 	if (save_map(d))

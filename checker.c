@@ -6,13 +6,11 @@
 /*   By: etornay- <etornay-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 13:31:04 by etornay-          #+#    #+#             */
-/*   Updated: 2024/05/14 16:42:52 by etornay-         ###   ########.fr       */
+/*   Updated: 2024/05/15 14:20:52 by etornay-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
-
-//Comprueba si hay o no una colision con un muro
 
 int	check_wall_hit(t_data *data, float x, float y)
 {
@@ -30,8 +28,6 @@ int	check_wall_hit(t_data *data, float x, float y)
 			return (0);
 	return (1);
 }
-
-//Comprueba si hay un cruce o intersección en una dirección específica
 
 int	check_cross(float angle, float *cross, float *step_size, int horizon)
 {
@@ -56,8 +52,6 @@ int	check_cross(float angle, float *cross, float *step_size, int horizon)
 	return (1);
 }
 
-//Normaliza que el ángulo esté de 0º a 360º
-
 float	check_angle(float angle)
 {
 	if (angle < 0)
@@ -66,8 +60,6 @@ float	check_angle(float angle)
 		angle -= (2 * M_PI);
 	return (angle);
 }
-
-//Comprueba que el archivo del mapa sea .cub
 
 int	check_map_name(char *name)
 {

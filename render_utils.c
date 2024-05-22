@@ -6,14 +6,11 @@
 /*   By: etornay- <etornay-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 16:23:18 by etornay-          #+#    #+#             */
-/*   Updated: 2024/05/15 13:53:25 by etornay-         ###   ########.fr       */
+/*   Updated: 2024/05/15 14:25:26 by etornay-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
-
-//Convierte los componentes RGB y el canal alfa en un entero
-//que representa el color
 
 int	get_colors(int r, int g, int b, int a)
 {

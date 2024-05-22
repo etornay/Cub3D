@@ -1,16 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free.c                                             :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: etornay- <etornay-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nmontiel <montielarce9@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 16:35:44 by nmontiel          #+#    #+#             */
-/*   Updated: 2024/05/15 14:24:22 by etornay-         ###   ########.fr       */
+/*   Updated: 2024/05/03 14:08:41 by nmontiel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
+
+//Libera un array
 
 void	free_array(char ***str)
 {
@@ -28,6 +30,8 @@ void	free_array(char ***str)
 		*str = NULL;
 	}
 }
+
+//pt.2, libera c_rgb , player, ray y direcciones
 
 void	free_data2(t_data *data)
 {
@@ -57,6 +61,8 @@ void	free_data2(t_data *data)
 	if (data->ray)
 		free(data->ray);
 }
+
+//Libera el mapa y f_rgb
 
 void	free_data(t_data *data)
 {

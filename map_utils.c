@@ -3,17 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   map_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: etornay- <etornay-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nmontiel <montielarce9@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 14:21:17 by etornay-          #+#    #+#             */
-/*   Updated: 2024/05/06 16:01:15 by etornay-         ###   ########.fr       */
+/*   Updated: 2024/05/16 17:58:23 by nmontiel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
-
-/* Esta funcion lee lineas del fd, las junta en una string y luego la divide en
-lineas individuales para almacenarlas en data->map. */
 
 int	save_map(t_data *data)
 {
@@ -42,9 +39,6 @@ int	save_map(t_data *data)
 	return (free(map_join), 0);
 }
 
-/* Esta funcion se asegura de que todas las lineas del mapa tengan la
-misma longitud, rellenando las lineas mas cortas con espacios en blanco */
-
 int	fix_map(t_data *dta)
 {
 	size_t	max_l;
@@ -72,4 +66,34 @@ int	fix_map(t_data *dta)
 		dta->w_map = max_l - 1;
 	}
 	return (0);
+}
+
+int	process_textures_and_colors(t_data *data, char **split_text, char **t_c)
+{
+	if (save_textures_2(data, split_text, t_c))
+		return (1);
+	if ((!ft_strncmp(split_text[data->i], "F", 1) \
+	|| !ft_strncmp(split_text[data->i], "F", 1) \
+	|| (!ft_strncmp(split_text[data->i], "C", 1) \
+	|| !ft_strncmp(split_text[data->i], "C", 1))) \
+	&& check_colors(data, *t_c, split_text[data->i]))
+		return (1);
+	free(*t_c);
+	return (0);
+}
+
+void	check_textures(t_data *d, char **texture)
+{
+	if ((((!ft_strncmp(d->line, "NO", 2) || !ft_strncmp(d->line, "SO", 2) \
+	|| !ft_strncmp(d->line, "WE", 2) || !ft_strncmp(d->line, "EA", 2)) \
+	&& ((d->line[2] == ' ' || (d->line[2] >= 9 && d->line[2] <= 13)))) \
+	|| ((!ft_strncmp(d->line, "F", 1) || !ft_strncmp(d->line, "C", 1)) \
+	&& ((d->line[1] == ' ' || (d->line[1] >= 9 && d->line[1] <= 13))))))
+	{
+		*texture = ft_strjoin(*texture, d->line);
+		d->count_textures++;
+	}
+	else if (ft_strncmp(d->line, "\n", 2) && !(!ft_strncmp(d->line, "F", 1) \
+	|| !ft_strncmp(d->line, "C", 1)))
+		d->count_textures++;
 }

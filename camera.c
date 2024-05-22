@@ -6,14 +6,11 @@
 /*   By: etornay- <etornay-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 16:20:45 by etornay-          #+#    #+#             */
-/*   Updated: 2024/05/14 13:21:00 by etornay-         ###   ########.fr       */
+/*   Updated: 2024/05/15 14:20:19 by etornay-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
-
-/* Esta función se encarga de la visión del jugador en movimiento de un
-punto a otro siempre que no se tope con un obstáculo */
 
 void	movement(t_data *data, double x, double y)
 {
@@ -35,9 +32,6 @@ void	movement(t_data *data, double x, double y)
 	}
 }
 
-/* Esta función se encarga de la visión de rotación del jugador al pulsar
-DERECHA o IZQUIERDA */
-
 void	cam_rotation(t_data *data, int i)
 {
 	if (i == 1)
@@ -53,8 +47,6 @@ void	cam_rotation(t_data *data, int i)
 			data->person->ang += (2 * M_PI);
 	}
 }
-
-/* Esta función se encarga de la visión de rotación del jugador y movimiento */
 
 void	all_movement(t_data *data, double x, double y)
 {

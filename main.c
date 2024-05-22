@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: etornay- <etornay-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nmontiel <montielarce9@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 13:03:53 by nmontiel          #+#    #+#             */
-/*   Updated: 2024/05/14 18:59:30 by etornay-         ###   ########.fr       */
+/*   Updated: 2024/05/16 17:59:45 by nmontiel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,6 @@ int	main(int argc, char **argv)
 	int		fd;
 	t_data	data;
 
-	atexit(ft_leaks);
 	if (argc == 2)
 	{
 		if (!check_map_name(argv[1]))
@@ -80,9 +79,4 @@ int	main(int argc, char **argv)
 		return (0);
 	}
 	ft_error(W_ARG);
-}
-
-void	ft_leaks(void)
-{
-	system("leaks -q cub3D");
 }

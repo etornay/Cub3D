@@ -6,7 +6,7 @@
 /*   By: etornay- <etornay-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/10 15:46:33 by etornay-          #+#    #+#             */
-/*   Updated: 2024/05/14 18:07:23 by etornay-         ###   ########.fr       */
+/*   Updated: 2024/05/15 14:25:35 by etornay-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,8 +84,6 @@ void	create_walls(t_data *data, double wall_h, int t_pix, int b_pix)
 		t_pix++;
 	}
 }
-
-//Renderización de los muros en el mapa
 
 void	render_walls(t_data *data, int ray)
 {

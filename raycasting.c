@@ -6,13 +6,11 @@
 /*   By: etornay- <etornay-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 12:56:35 by etornay-          #+#    #+#             */
-/*   Updated: 2024/05/14 19:13:17 by etornay-         ###   ########.fr       */
+/*   Updated: 2024/05/15 14:25:21 by etornay-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
-
-//Comprueba el cuadrante del ángulo
 
 int	angle_circle(float angle, char axis)
 {
@@ -28,8 +26,6 @@ int	angle_circle(float angle, char axis)
 	}
 	return (0);
 }
-
-//Comprueba si el cruce o intersección es en una vertiente vertical del cubo
 
 float	vertical_cross(t_data *data, float angle)
 {
@@ -58,8 +54,6 @@ float	vertical_cross(t_data *data, float angle)
 	return (sqrt(pow(vertical_x - data->person->pers_x, 2)
 			+ pow(vertical_y - data->person->pers_y, 2)));
 }
-
-//Comprueba si el cruce o intersección es en una vertiente horizontal del cubo
 
 float	horizontal_cross(t_data *data, float angle)
 {
